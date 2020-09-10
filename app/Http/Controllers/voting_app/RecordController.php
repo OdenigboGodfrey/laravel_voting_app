@@ -5,11 +5,11 @@ namespace App\Http\Controllers\voting_app;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Validator;
-use App\Models\Record;
-use App\Models\Option;
-use App\Models\Vote;
-use App\Models\Mode;
+use Illuminate\Support\Facades\Validator;
+use App\Models\voting_app\Record;
+use App\Models\voting_app\Option;
+use App\Models\voting_app\Vote;
+use App\Models\voting_app\Mode;
 
 class RecordController extends Controller
 {
