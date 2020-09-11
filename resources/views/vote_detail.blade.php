@@ -10,22 +10,24 @@
 @section('content')
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">{{$record->title}}</h1>
+            <h1 class="mt-4">{{$option->option}}</h1>
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>Contestant</th>
-                                <th>Votes</th>
+                                <th>User</th>
+                                <th>Casted</th>
+                                <th>Date</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($record->options as $option)
+                                @foreach($votes as $vote)
                                     <tr>
-                                        <td><a href="{{route('vote.get.detail', $option->id)}}">{{$option->option}}</a></td>
-                                        <td>{{$option->total_votes}}</td>
+                                        <td>{{$vote->user ?? "N/A"}}</td>
+                                        <td>{{$vote->votes}} Votes</td>
+                                        <td>{{$vote->created_at->diffforHumans()}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

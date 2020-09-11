@@ -13,6 +13,7 @@
 
     <div class="container">
         <br/>
+        <h3>Active Campaigns</h3>
         @if (isset($message) && isset($status))
             @if (!$status)
                 <div class="error" id="error_message_box">{{$message}}</div>

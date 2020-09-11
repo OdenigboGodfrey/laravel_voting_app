@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\voting_app;
 
 use App\Http\Controllers\Controller;
+use App\Models\voting_app\Option;
 use App\Models\voting_app\Record;
 use App\Models\voting_app\Vote;
 use Illuminate\Http\Request;
@@ -67,6 +68,34 @@ class VoteController extends Controller
         }
 
         return view('polls_detail', ['record' => $record]);
+    }
+
+    public function vote_get_detailed_view($option_id){
+        $option = Option::where('id', $option_id)->first();
+        $votes = Vote::where('option_id', $option_id)->get();
+        return view('vote_detail', ['votes' => $votes, 'option' => $option]);
+//        if (!$votes) {
+//            $votes = null;
+//        }
+//
+//        else {
+//            $temp_votes = $votes;
+//            $votes = [];
+//            foreach ($temp_votes as $vote) {
+//                $votes = $option->votes()->get();
+//                $total_votes = 0;
+//                foreach ($votes as $vote) {
+//                    $total_votes += $vote->votes;
+//                }
+//
+//                $option['total_votes'] = $total_votes;
+//
+//                array_push($options, $option);
+//            }
+//            $record['options'] = $options;
+//        }
+
+
     }
 
     public function post_vote($record_id, Request $request){

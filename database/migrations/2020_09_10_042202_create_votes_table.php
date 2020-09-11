@@ -20,6 +20,7 @@ class CreateVotesTable extends Migration
             $table->unsignedBigInteger('option_id');
             $table->unsignedBigInteger('votes');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

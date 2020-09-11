@@ -30,8 +30,8 @@
                 </div>
             @endif
         @endif
-
-        @if (isset($records))
+        <h4>Here you can see the total number of votes for each record</h4>
+        @if (isset($records) && count($records) > 0)
 
             @foreach($records as $record)
                 {{--{{dd($record->options)}}--}}

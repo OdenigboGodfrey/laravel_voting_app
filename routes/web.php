@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'voting_app\RecordController@get_all_records_view');
 
 Route::get('/list', 'voting_app\RecordController@get_all_records_view')->name('record.get.all');
 
 Route::get('/polls', 'voting_app\RecordController@polls_get_all_records_view')->name('record.get.polls');
 Route::get('/polls-detail/{record_id}', 'voting_app\VoteController@poll_get_votes_view')->name('record.get.polls.detail');
+Route::get('/vote-detail/{option_id}', 'voting_app\VoteController@vote_get_detailed_view')->name('vote.get.detail');
 
 Route::prefix('/new-record')->group(function() {
     Route::get('/', 'voting_app\RecordController@create_record_view')->name('record.create');
