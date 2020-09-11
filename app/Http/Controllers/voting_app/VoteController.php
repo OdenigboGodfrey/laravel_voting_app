@@ -74,28 +74,6 @@ class VoteController extends Controller
         $option = Option::where('id', $option_id)->first();
         $votes = Vote::where('option_id', $option_id)->get();
         return view('vote_detail', ['votes' => $votes, 'option' => $option]);
-//        if (!$votes) {
-//            $votes = null;
-//        }
-//
-//        else {
-//            $temp_votes = $votes;
-//            $votes = [];
-//            foreach ($temp_votes as $vote) {
-//                $votes = $option->votes()->get();
-//                $total_votes = 0;
-//                foreach ($votes as $vote) {
-//                    $total_votes += $vote->votes;
-//                }
-//
-//                $option['total_votes'] = $total_votes;
-//
-//                array_push($options, $option);
-//            }
-//            $record['options'] = $options;
-//        }
-
-
     }
 
     public function post_vote($record_id, Request $request){
@@ -124,7 +102,7 @@ class VoteController extends Controller
                 'record_id' => $record->id,
                 'option_id' => $data['option_id'],
                 'votes' => $data['votes'],
-                'ip' => (array_key_exists('user', $data)) ? $data['user'] : $this->getIp($request),
+                'user' => (array_key_exists('user', $data)) ? $data['user'] : $this->getIp($request),
             ]) ;
 
             if ($vote) {

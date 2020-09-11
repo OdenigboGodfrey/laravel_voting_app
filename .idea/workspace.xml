@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7d7baf9-b109-429d-ac4a-4d2100219d32" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_10_042202_create_votes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_10_042202_create_votes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,19 +34,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VoteController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VoteController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="75" column="74" selection-start-line="75" selection-start-column="74" selection-end-line="75" selection-end-column="74" />
-              <folding>
-                <element signature="e#1143#2520#0#PHP" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="104" column="21" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/base.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="309">
@@ -104,10 +101,10 @@
         <option value="$PROJECT_DIR$/resources/views/polls.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/polls_detail.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php" />
         <option value="$PROJECT_DIR$/resources/views/vote_detail.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_10_042202_create_votes_table.php" />
         <option value="$PROJECT_DIR$/resources/views/base.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php" />
       </list>
     </option>
   </component>
@@ -401,12 +398,12 @@
       <workItem from="1589299425504" duration="393000" />
       <workItem from="1589299867685" duration="19000" />
       <workItem from="1589487915186" duration="750000" />
-      <workItem from="1599777413181" duration="15220000" />
+      <workItem from="1599777413181" duration="15454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21912000" />
+    <option name="totallyTimeSpent" value="22146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -721,16 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="75" column="74" selection-start-line="75" selection-start-column="74" selection-end-line="75" selection-end-column="74" />
-          <folding>
-            <element signature="e#1143#2520#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -752,6 +739,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
           <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/voting_app/VoteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="104" column="21" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
         </state>
       </provider>
     </entry>
