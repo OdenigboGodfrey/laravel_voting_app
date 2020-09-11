@@ -321,9 +321,8 @@ if(! function_exists('prepare_json')) {
     /**
      * @param $status
      * @param $data
-     * @param string $msg
-     * @param int $status_code
-     * @return \Illuminate\Http\JsonResponse
+     * @param $msg
+     * @return array
      */
     function prepare_json($status, $data, $msg='', $status_code = Symfony\Component\HttpFoundation\Response::HTTP_OK) {
         // $response = new Symfony\Component\HttpFoundation\Response;
@@ -348,7 +347,7 @@ if(! function_exists('get_api_string')) {
      * @param $title
      * @return string
      */
-    function get_api_string($title, $plug_in_var='') {
+    function get_api_string($title='', $plug_in_var='') {
         // $response = new Symfony\Component\HttpFoundation\Response;
         $app_strings = [
             'error_occurred' => 'An error Occurred.',
@@ -358,7 +357,6 @@ if(! function_exists('get_api_string')) {
             'invalid_action' => 'Invalid action attempted'.(($plug_in_var != '') ? ':'.$plug_in_var : $plug_in_var ).'.',
             'wrong_password' => 'Incorrect Password.',
             'login_ok' => 'Login Successful.',
-            'login_failed' => 'Invalid email or password.',
             'signup_error' => 'An error occurred during signup. Please try again later.',
             'signup_ok' => 'Signup successful.',
             'invalid_phone_no' => 'Phone Number is invalid.',
@@ -368,11 +366,9 @@ if(! function_exists('get_api_string')) {
             'invalid_file' => 'Invalid file upload',
             'unauthorized' => 'Unauthorized to perform that action.',
             'no_images' => 'No images found for upload',
-            'no_files' => 'No file(s) found for upload',
             'files_uploaded' => 'Files uploaded',
             'file_not_ploaded' => 'Files not uploaded',
             'no_record' => $plug_in_var.": no record to show.",
-            'not_found' => $plug_in_var.": not found.",
             'created' => $plug_in_var . ' saved.',
             'not_created' => $plug_in_var . ' not saved.',
             'record_exist' => $plug_in_var . ' already saved.',
@@ -384,30 +380,16 @@ if(! function_exists('get_api_string')) {
             'no_items' => 'No Items to display.',
             'purchase_ok' => 'Items purchased successfully',
             'wrong_user_type' => 'Incorrect User type passed.',
+            'old_password_dont_match' => "Old Password incorrect.",
+            'passwords_dont_match' => "Passwords don't match.",
             'password_changed' => "Passwords updated.",
             'enter_reset_code' => 'Please enter code sent to your email.',
             'code_resent' => 'Code resent.',
-            'reset_code_wrong' => 'Code incorrect.',
             'reset_code_valid' => 'Reset Code validated.',
-            'passwords_dont_match' => "Passwords don't match.",
-            'old_password_dont_match' => "Old Password incorrect.",
-            'gig_created' => 'Gig saved.',
-        ];
-        return $app_strings[$title];
-    }
-}
+            'reset_code_wrong' => 'Code incorrect.',
 
-if(! function_exists('date_compare')) {
-    /**
-     * @param $a
-     * @param $b
-     * @return false|int
-     */
-    function date_compare($a, $b)
-    {
-        $t1 = strtotime($a['created_at']);
-        $t2 = strtotime($b['created_at']);
-        return $t1 - $t2;
+        ];
+        return ($title == '') ? $app_strings['generic_ok'] : $app_strings[$title];
     }
 }
 
@@ -430,47 +412,5 @@ if(! function_exists('get_user_type')) {
                 if ($type == 'int') return $value;
             }
         }
-    }
-}
-
-if(! function_exists('get_user_info')) {
-
-    /**
-     * @return array
-     */
-    function get_user_info() {
-        /** display positive message to user compulsory, (validation) $positive == true (but higher than neutral) **/
-        $positive = 1;
-        /** (messaging)display message to user not compulsory, (validation) neutral == true **/
-        $neutral = 0;
-        /** display negative message to user compulsory, (validation) $negative == false **/
-        $negative = -1;
-        /** display error message to user compulsory, (validation) $error == crash occurred  **/
-        $error = -2;
-
-        $data = [
-            'user_type' => \Illuminate\Support\Facades\Session::get('user_type'),
-            'user_type_client' => get_api_string('user_type_client'),
-            'user_type_customer' => get_api_string('user_type_customer'),
-            'user_type_admin' => get_api_string('user_type_admin'),
-            'user_token' => \Illuminate\Support\Facades\Session::get('user_token'),
-            'user' => auth()->user(),
-            'positive' => $positive,
-            'neutral' => $neutral,
-            'negative' => $negative,
-            'error' => $error,
-        ];
-
-        if ($data['user_type'] == get_api_string('user_type_client')) {
-            $data['client'] = \Illuminate\Support\Facades\Session::get('client');
-            $data['client_token'] = \Illuminate\Support\Facades\Session::get('client_token');
-        }
-
-        else if ($data['user_type'] == get_api_string('user_type_customer')) {
-            $data['customer'] = \Illuminate\Support\Facades\Session::get('customer');
-            $data['customer_token'] = \Illuminate\Support\Facades\Session::get('customer_token');
-        }
-
-        return $data;
     }
 }

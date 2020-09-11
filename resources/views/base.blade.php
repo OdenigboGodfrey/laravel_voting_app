@@ -48,7 +48,7 @@
                             {{--New Gig--}}
                         {{--</a>--}}
                     {{--@endif--}}
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('record.create')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
                         New Record
                     </a>

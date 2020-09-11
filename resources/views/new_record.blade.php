@@ -1,46 +1,72 @@
 @extends('base')
 
-@section('title', 'New Gig')
+@section('title', 'Create Record')
+
+@section('extra_css')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@endsection
 
 
 @section('content')
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-            <main>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5">
-                            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
-                                <div class="card-body">
-                                    <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
-                                    <form>
-                                        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" /></div>
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="login.html">Return to login</a><a class="btn btn-primary" href="login.html">Reset Password</a></div>
-                                    </form>
-                                </div>
-                                <div class="card-footer text-center">
-                                    <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container">
+        <h2>Create Record</h2>
+        @if (isset($message) && isset($status))
+            @if (!$status)
+                <div class="error" id="error_message_box">{{$message}}</div>
+            @endif
+            @if ($status)
+                <div class="success" id="success_message_box">{{$message}}</div>
+            @endif
+        @endif
+        @if (isset($messages) && isset($status))
+            @if (!$status)
+                <div class="error" id="error_message_box">
+                    @foreach($messages as $message)
+                        <div style="margin-bottom: 5px;">{{$message}}</div>
+                    @endforeach
                 </div>
-            </main>
-        </div>
-        <div id="layoutAuthentication_footer">
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
+            @endif
+        @endif
+        <form class="form-horizontal" action="{{route('record.create.post')}}" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Title:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
                 </div>
-            </footer>
-        </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">First Contestant:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="first" placeholder="Enter First Contestant" name="options[]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Second Contestant:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="second" placeholder="Enter Second Contestant" name="options[]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Third Contestant:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="third" placeholder="Enter Third Contestant" name="options[]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Fourth Contestant:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="fourth" placeholder="Enter Fourth Contestant" name="options[]">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
+
 @endsection

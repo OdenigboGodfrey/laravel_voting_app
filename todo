@@ -1,22 +1,6 @@
-voting system
-
-- create records [only 4 options] => records [id, title, created_at,  active(int)] [record_id, option, created at]
-- create mode (if mode is strict, allow only one vote per ip, else no restriction)
-- load up the site, and you vote
-- user views all votable 
-- user can view one votable (in select)
-- user can vote only once (but can change selected vote) [use ip/mac|| if user has vote record for this vote || select(checked) that record || once vote is cast, it cant be changed ]
-- admin can view votes [use datatables to sort votes || ] (table => "President of 2023", options = [Young person [10], Buhari [5], Peter Obi [4], Atiku [9]] || table_UI [options] => [votes])
-- delete record
-
-
-records
-options
-mode [strict|loose]
-
-- make db
-- make model
-- make controller
-- create recordcreate function
-- create options
-- 
+user create profile 
+user reset password
+verify user profile
+models, controllers
+routes
+passport install

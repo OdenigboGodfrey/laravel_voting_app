@@ -35,6 +35,40 @@ class RecordController extends Controller
     }
 
     public function create_record_view(){
-        return view('dashboard.new_interest');
+        return view('new_record');
+    }
+
+    public function create_record(Request $request) {
+        $validator = $this->validator($request->all(),[
+            'title' => 'required|string',
+            'options' => 'required',
+        ]);
+
+        if ($validator['failed']) {
+            return view('new_record', ['messages' => $validator['messages']]);
+        }
+
+        try {
+            $data  = $request->all();
+            $record = Record::create([
+                'title' => $data['title'],
+                'active' => 1,
+            ]) ;
+
+            if ($record) {
+                foreach ($data['options'] as $option) {
+                    $option = Option::create([
+                        'record_id' => $record->id,
+                        'option' => $option,
+                    ]);
+                }
+
+                return view('new_record',  ['message' => \get_api_string('generic_ok'), 'status' => true]);
+            }
+            return view('new_record',  ['message' => \get_api_string('error_occurred'), 'status' => false]);
+        }
+        catch(\Exception $ex) {
+            return view('new_record',  ['message' => \get_api_string('error_occurred'), 'status' => false]);
+        }
     }
 }

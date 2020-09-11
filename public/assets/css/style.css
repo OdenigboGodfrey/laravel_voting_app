@@ -1674,3 +1674,18 @@ form textarea {
     .site-footer .social-links a:hover {
       background: #009ad8;
       color: white; }
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  padding: 1.25em;
+  border-radius: 10px;
+}
+
+.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 1.25em;
+  border-radius: 10px;
+}

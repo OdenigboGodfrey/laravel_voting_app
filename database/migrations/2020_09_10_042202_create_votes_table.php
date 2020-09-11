@@ -17,6 +17,7 @@ class CreateVotesTable extends Migration
             $table->bigIncrements('id');
             $table->string('ip')->nullable();
             $table->unsignedBigInteger('option_id');
+            $table->unsignedBigInteger('votes');
             $table->timestamps();
         });
     }
