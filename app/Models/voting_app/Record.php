@@ -21,4 +21,11 @@ class Record extends Model
     public function options() {
         return $this->hasMany(Option::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function votes() {
+        return $this->hasMany(Vote::class);
+    }
 }

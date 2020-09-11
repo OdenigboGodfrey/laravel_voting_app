@@ -36,7 +36,7 @@
             @foreach($records as $record)
                 {{--{{dd($record->options)}}--}}
                 <div class="list-group">
-                    <a href="{{route('vote.get', $record->id)}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <a href="{{route('record.get.polls.detail', $record->id)}}" class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{$record->title}}</h5>
                             <small>Voted: {{count($record->votes()->get())}}</small>

@@ -71,4 +71,26 @@ class RecordController extends Controller
             return view('new_record',  ['message' => \get_api_string('error_occurred'), 'status' => false]);
         }
     }
+
+    public function get_all_records_view() {
+        $records_temp = Record::all();
+        $records = [];
+        foreach ($records_temp as $record) {
+            $record['options'] = $record->options()->get();
+
+            array_push($records, $record);
+        }
+        return view('vote_list', ['records' => $records]);
+    }
+
+    public function polls_get_all_records_view() {
+        $records_temp = Record::all();
+        $records = [];
+        foreach ($records_temp as $record) {
+            $record['options'] = $record->options()->get();
+
+            array_push($records, $record);
+        }
+        return view('polls', ['records' => $records]);
+    }
 }

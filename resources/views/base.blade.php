@@ -42,28 +42,16 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Records</div>
-                    {{--@if($user_type == $user_type_client)--}}
-                        {{--<a class="nav-link" href="{{route('gig.new_gig')}}">--}}
-                            {{--<div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>--}}
-                            {{--New Gig--}}
-                        {{--</a>--}}
-                    {{--@endif--}}
                     <a class="nav-link" href="{{route('record.create')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
                         New Record
                     </a>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('record.get.polls')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-exclamation-circle"></i></div>
                         Voting polls
                     </a>
                     <div class="sb-sidenav-menu-heading">Voting</div>
-                    {{--@if($user_type == $user_type_customer)--}}
-                        {{--<a class="nav-link" href="{{route('user.portfolio.view')}}">--}}
-                            {{--<div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>--}}
-                            {{--Porfolio--}}
-                        {{--</a>--}}
-                    {{--@endif--}}
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('record.get.all')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-exclamation-circle"></i></div>
                         Go to Voting section
                     </a>

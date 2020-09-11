@@ -44,6 +44,31 @@ class VoteController extends Controller
         return view('vote', ['record' => $record]);
     }
 
+    public function poll_get_votes_view($record_id){
+        $record = Record::where('id', $record_id)->first();
+        if (!$record) {
+            $record = null;
+        }
+        else {
+            $temp_options = $record->options()->get();
+            $options = [];
+            foreach ($temp_options as $option) {
+                $votes = $option->votes()->get();
+                $total_votes = 0;
+                foreach ($votes as $vote) {
+                    $total_votes += $vote->votes;
+                }
+
+                $option['total_votes'] = $total_votes;
+
+                array_push($options, $option);
+            }
+            $record['options'] = $options;
+        }
+
+        return view('polls_detail', ['record' => $record]);
+    }
+
     public function post_vote($record_id, Request $request){
         $validator = $this->validator($request->all(),[
             'option_id' => 'required|string',
@@ -67,6 +92,7 @@ class VoteController extends Controller
             $data  = $request->all();
 
             $vote = Vote::create([
+                'record_id' => $record->id,
                 'option_id' => $data['option_id'],
                 'votes' => $data['votes'],
                 'ip' => (array_key_exists('user', $data)) ? $data['user'] : $this->getIp($request),
